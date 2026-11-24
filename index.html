@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6">
+  <meta name="description" content="Find a thoughtful way to see more of the world with Atlas Journeys.">
+  <title>Atlas Journeys | Find your somewhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/dark.css">
+  <link rel="stylesheet" href="/responsive.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="announcement"><span>✳</span> Thoughtful trips, made a little more personal <a href="#offers">Explore our seasonal offer <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Atlas Journeys home"><span class="brand-mark">A</span><span>atlas<span class="brand-light">journeys</span></span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="#home" class="nav-link active" data-view="home">Home</a>
+      <a href="#destinations" class="nav-link">Destinations</a>
+      <a href="#packages" class="nav-link">Packages</a>
+      <a href="#hotels" class="nav-link">Hotels</a>
+      <a href="#book" class="nav-link" id="book-nav">Book a trip</a>
+      <button class="nav-link nav-button" data-action="orders">My orders</button>
+    </nav>
+    <div class="nav-actions" id="nav-actions"><button class="ai-nav-button" data-action="ai" aria-label="Open AI travel assistant"><span class="ai-nav-spark">✦</span> AI Assistant</button><button class="text-button" data-action="login">Log in</button><button class="button button-small button-dark" data-action="register">Sign up <span>↗</span></button><button class="text-button" data-action="theme" aria-label="Toggle theme">🌙</button></div>
+  </header>
+
+  <dialog id="ai-dialog" class="modal-dialog ai-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner ai-modal-inner"><p class="eyebrow">ATLAS AI</p><h2>Plan somewhere <em>special.</em></h2><div id="ai-messages" class="ai-messages" aria-live="polite"><div class="ai-message ai-message-assistant">Hello! Tell me the kind of trip you want, your budget, or the dates you're considering.</div></div><form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-chat-input">Ask the AI travel assistant</label><input id="ai-chat-input" type="text" maxlength="1200" placeholder="Where should I go for a quiet beach trip?" autocomplete="off" required><button type="submit" class="ai-send-button" aria-label="Send message">↗</button></form></div></dialog>
+
+  <dialog id="search-dialog" class="modal-dialog search-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">SEARCH</p><h2>Find your <em>next trip.</em></h2><form id="global-search-form" class="form-stack"><label>Search destinations, trips, or hotels<input type="search" id="global-search-input" placeholder="e.g. Kyoto, beach, hotel, Italy" autocomplete="off" required></label><button type="submit" class="button button-dark form-submit">Search <span>↗</span></button></form><div id="search-results" class="search-results"></div></div></dialog>
+
+  <main id="home-view">
+    <section class="hero" id="home">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90" alt="Quiet lake among forested mountains at sunrise">
+      <div class="hero-shade"></div>
+      <div class="hero-content wrap">
+        <p class="eyebrow eyebrow-light"><span></span> GO FAR. FEEL AT HOME.</p>
+        <h1>Explore the World<br><em>With Us</em></h1>
+        <p class="hero-copy">A change of scenery can change everything.<br>Let's find the place that stays with you.</p>
+        <a class="button button-coral" href="#book">Find your next trip <span>↗</span></a>
+      </div>
+      <div class="hero-caption"><span>46° 49' N · 9° 31' E</span><span>Somewhere in the Swiss Alps</span></div>
+      <div class="hero-index"><span>01</span><span class="index-line"></span><span>06</span></div>
+    </section>
+
+    <section class="search-band" id="book">
+      <form class="trip-search wrap" id="trip-search">
+        <label class="search-field"><span>FROM</span><select id="search-origin" required><option value="United States" selected>United States</option></select></label>
+        <span class="route-swap" aria-hidden="true">↗</span>
+        <label class="search-field destination-field"><span>WHERE TO?</span><input id="search-destination" list="country-options" placeholder="Country or city" autocomplete="off" aria-expanded="false" aria-controls="country-suggestions"><div id="country-suggestions" class="country-suggestions" role="listbox" hidden></div></label>
+        <label class="search-field"><span>DEPARTURE</span><input type="date" id="search-depart" required></label>
+        <label class="search-field"><span>RETURN</span><input type="date" id="search-return" required></label>
+        <label class="search-field compact-field"><span>TRAVELLERS</span><select id="search-travellers"><option value="1">1 traveller</option><option value="2">2 travellers</option><option value="3">3 travellers</option><option value="4">4 travellers</option><option value="5">5 travellers</option><option value="6">6 travellers</option></select></label>
+        <label class="search-field compact-field"><span>CLASS</span><select id="search-class"><option>Economy</option><option>Premium economy</option><option>Business</option><option>First</option></select></label>
+        <button class="search-submit" type="submit" aria-label="Search trips">↗</button>
+        <datalist id="country-options"></datalist>
+      </form>
+    </section>
+
+    <section class="section destinations-section" id="destinations">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">THE WORLD IS A BIG PLACE</p><h2>Where to <em>next?</em></h2></div><a class="arrow-link" href="#packages">See all destinations <span>↗</span></a></div>
+        <div class="destination-grid" id="destination-grid"><div class="loading-note">Finding places worth the journey…</div></div>
+      </div>
+    </section>
+
+    <section class="section packages-section" id="packages">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">A FEW GOOD PLACES TO START</p><h2>Made for the <em>moment.</em></h2></div><div class="package-filters" id="package-filters"><button class="filter-chip active" data-filter="All">All trips</button><button class="filter-chip" data-filter="Culture">Culture</button><button class="filter-chip" data-filter="Nature">Nature</button><button class="filter-chip" data-filter="Coast">Coast</button></div></div>
+        <input type="search" id="package-search" placeholder="Search trips..." aria-label="Search trips" style="width:100%;padding:10px 14px;border-radius:999px;border:1px solid #ddd;margin-bottom:18px;">
+        <div class="package-grid" id="package-grid"><div class="loading-note">Gathering the good itineraries…</div></div>
+        <div class="demo-note"><span>ⓘ</span> These sample itineraries and prices are for demonstration only. Booking requests do not reserve travel services.</div>
+      </div>
+    </section>
+
+    <section class="section hotels-section" id="hotels">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">A PLACE TO REST YOUR HEAD</p><h2>Handpicked <em>hotels.</em></h2></div><a class="arrow-link" href="#hotels">Browse all stays <span>↗</span></a></div>
+        <div class="hotel-grid" id="hotel-grid"><div class="loading-note">Finding stays worth the journey…</div></div>
+        <div class="demo-note"><span>ⓘ</span> These sample hotels and prices are for demonstration only. Booking requests do not reserve rooms.</div>
+      </div>
+    </section>
+
+    <section class="experiences-band">
+      <div class="wrap experience-layout">
+        <div class="experience-intro"><p class="eyebrow eyebrow-light">THE DETAILS, THOUGHT THROUGH</p><h2>More than a<br><em>way to get there.</em></h2><p>Start with the kind of trip you have in mind. We'll help with the rest, from the first flight search to a slower day on the ground.</p><a class="text-link-light" href="#packages">Browse the collection <span>↗</span></a></div>
+        <a class="experience-card flight-card" href="#book" data-experience="flight"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=85" alt="Airplane wing above a soft blanket of clouds"><span class="experience-number">01 / TRAVEL</span><span class="experience-title">Flights <i>↗</i></span><span class="experience-sub">Browse sample routes</span></a>
+        <a class="experience-card stay-card" href="#packages" data-experience="stay"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=85" alt="A quiet hotel pool framed by greenery"><span class="experience-number">02 / STAY</span><span class="experience-title">Places to stay <i>↗</i></span><span class="experience-sub">Find a home away</span></a>
+        <a class="experience-card tour-card" href="#packages" data-experience="tour"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=85" alt="Colorful Italian coastal villages above the sea"><span class="experience-number">03 / EXPERIENCE</span><span class="experience-title">Local tours <i>↗</i></span><span class="experience-sub">Meet a place up close</span></a>
+      </div>
+    </section>
+
+    <section class="section offer-section" id="offers">
+      <div class="wrap offer-wrap"><div class="offer-copy"><p class="eyebrow">A LITTLE EXTRA ROOM TO ROAM</p><h2>Your next story<br>starts <em>20% closer.</em></h2><p>Take 20% off selected demonstration packages when you explore the collection this season.</p><a class="button button-dark" href="#packages">Find a trip <span>↗</span></a><small>*Sample offer shown for this demo. No purchase or discount is applied.</small></div><div class="offer-art"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=85" alt="Traveler looking over a dramatic landscape"><span class="offer-stamp">GO<br>YOUR<br>OWN<br>WAY</span></div></div>
+    </section>
+
+    <section class="section review-section"><div class="wrap review-layout"><div><p class="eyebrow">NOTES FROM THE ROAD</p><h2>Good trips<br>leave <em>good stories.</em></h2><p class="review-disclaimer">Illustrative customer feedback for this demonstration website.</p></div><div class="review-quote"><div class="quote-mark">“</div><blockquote>Every detail felt considered, but nothing felt overplanned. We came back with the kind of memories you keep bringing up at dinner.</blockquote><div class="review-person"><span class="avatar">AM</span><span><strong>Alex Morgan</strong><small>Lisbon & the coast · Sample review</small></span><span class="review-stars">★★★★★</span></div><div class="review-controls"><button aria-label="Previous review" data-review="previous">←</button><span>01 <i></i> 03</span><button aria-label="Next review" data-review="next">→</button></div></div></div></section>
+
+    <section class="newsletter"><div class="wrap newsletter-layout"><div><p class="eyebrow eyebrow-light">A POSTCARD, NOW AND THEN</p><h2>Somewhere good<br>is always <em>out there.</em></h2></div><form id="newsletter-form"><label for="newsletter-email">Get notes from the road</label><div class="newsletter-input"><input id="newsletter-email" type="email" required placeholder="Your email address"><button aria-label="Subscribe">↗</button></div><small>Demo only. Your email isn't sent or stored.</small></form></div></section>
+  </main>
+
+  <section class="account-view" id="orders-view" hidden><div class="wrap dashboard-wrap"><div class="dashboard-top"><button class="back-link" data-action="home">← Back to exploring</button><p class="eyebrow">YOUR ATLAS</p><h1>Your <em>journeys.</em></h1><p class="dashboard-description">Booking requests and travel details, all in one place.</p></div><div class="dashboard-tools"><div class="order-search"><span>⌕</span><input id="order-search" type="search" placeholder="Search destinations or booking ID"></div><select id="order-status-filter" aria-label="Filter by status"><option value="">All statuses</option><option>Pending</option><option>Confirmed</option><option>Processing</option><option>Cancelled</option><option>Completed</option></select></div><div class="orders-list" id="orders-list"><div class="loading-note">Loading your bookings…</div></div></div></section>
+
+  <section class="account-view" id="admin-view" hidden><div class="wrap dashboard-wrap"><div class="dashboard-top"><button class="back-link" data-action="home">← Back to exploring</button><p class="eyebrow">ATLAS CONTROL ROOM</p><h1>Admin <em>overview.</em></h1><p class="dashboard-description">Manage sample packages, booking requests, and cancellation terms.</p></div><div class="admin-stats" id="admin-stats"></div><div class="admin-panel"><div class="section-heading"><div><p class="eyebrow">BOOKING REQUESTS</p><h2>Recent <em>orders.</em></h2></div><input id="admin-search" type="search" placeholder="Search ID or customer"></div><div id="admin-bookings" class="admin-bookings"></div></div><div class="admin-panel admin-lower"><div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2>Travel <em>packages.</em></h2></div><button class="button button-dark" id="add-package">Add package +</button></div><div id="admin-packages" class="admin-packages"></div></div><div class="admin-panel"><div class="section-heading"><div><p class="eyebrow">PLACES TO STAY</p><h2>Hotel <em>listings.</em></h2></div><button class="button button-dark" id="add-hotel">Add hotel +</button></div><div id="admin-hotels" class="admin-packages"></div></div><div class="admin-panel"><div class="section-heading"><div><p class="eyebrow">ROOM TYPES</p><h2>Manage <em>rooms.</em></h2></div></div><div id="admin-rooms" class="admin-packages"></div></div><div class="admin-panel"><div class="section-heading"><div><p class="eyebrow">BOOKING TERMS</p><h2>Cancellation <em>policy.</em></h2></div></div><form id="policy-form" class="policy-form"><label>Cancellation fee (USD)<input type="number" id="policy-fee" min="0" step="0.01" required></label><label>Free cancellation window (hours)<input type="number" id="policy-hours" min="0" max="720" required></label><button class="button button-dark">Save policy</button></form></div></div></section>
+
+  <footer class="site-footer"><div class="wrap"><div class="footer-main"><div class="footer-brand"><a class="brand brand-footer" href="#home"><span class="brand-mark">A</span><span>atlas<span class="brand-light">journeys</span></span></a><p>Find your somewhere.<br>Go a little further.</p><a href="mailto:hello@atlasjourneys.example">hello@atlasjourneys.example</a></div><div class="footer-col"><h3>Explore</h3><a href="#destinations">Destinations</a><a href="#packages">Travel packages</a><a href="#book">Plan a trip</a></div><div class="footer-col"><h3>Here to help</h3><a href="mailto:hello@atlasjourneys.example?subject=Atlas%20FAQ">Frequently asked questions</a><a href="mailto:hello@atlasjourneys.example?subject=Privacy">Privacy policy</a><a href="mailto:hello@atlasjourneys.example?subject=Terms">Terms of use</a><a href="/admin">Admin panel</a></div><div class="footer-col footer-news"><h3>A note from us</h3><p>Small ideas for your next big adventure.</p><a href="#newsletter-form">Join the list ↗</a></div></div><div class="footer-bottom"><span>© 2026 Atlas Journeys. A travel booking demonstration.</span><span>No real flights, rooms, tours, or payments are booked through this website.</span><span>Made for the love of elsewhere <b>✳</b></span></div></div></footer>
+
+  <dialog id="auth-dialog" class="modal-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">A PLACE TO KEEP YOUR PLANS</p><h2 id="auth-title">Welcome <em>back.</em></h2><div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">Log in</button><button class="auth-tab" data-auth-tab="register">Create account</button></div><div class="social-auth"><div id="google-signin-button"></div><button type="button" id="facebook-signin-button" class="social-button facebook-button"><span class="facebook-icon">f</span><span>Continue with Facebook</span></button><div class="social-divider"><span>or continue with email</span></div></div><form id="login-form" class="form-stack"><label>Email address<input name="identifier" type="email" autocomplete="username" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><div class="form-row"><label class="check-label"><input type="checkbox" name="remember"> Remember me</label><button type="button" data-forgot-password>Forgot password?</button></div><button type="submit" class="button button-dark form-submit">Log in <span>↗</span></button></form><form id="register-form" class="form-stack" hidden><label>Full name<input name="fullName" autocomplete="name" required maxlength="100"></label><label>Email address<input name="email" type="email" autocomplete="email" required></label><div class="form-grid"><label>Phone number<input name="phone" type="tel" placeholder="+1 555 012 3456" autocomplete="tel" required></label><label>Country of residence<input name="country" autocomplete="country-name" required></label></div><label>Password<input name="password" type="password" autocomplete="new-password" minlength="10" required><small>10+ characters with uppercase, lowercase, a number, and a symbol.</small></label><label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required></label><button type="submit" class="button button-dark form-submit">Create account <span>↗</span></button></form><p class="form-message" id="auth-message" role="alert"></p></div></dialog>
+
+  <dialog id="booking-dialog" class="modal-dialog booking-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">A DEMONSTRATION BOOKING REQUEST</p><h2>Let's plan your <em>trip.</em></h2><p class="modal-note">This request does not reserve a flight, room, or ticket. No payment is collected.</p><form id="booking-form" class="form-stack"><input type="hidden" name="packageId"><div class="booking-selected" id="booking-selected"></div><div class="form-grid"><label>Departure country<input name="departureCountry" required maxlength="80"></label><label>Travel class<select name="travelClass"><option>Economy</option><option>Premium economy</option><option>Business</option><option>First</option></select></label><label>Departure date<input type="date" name="departureDate" required></label><label>Return date<input type="date" name="returnDate" required></label><label>Adults<input type="number" name="adults" min="1" max="9" value="1" required></label><label>Children<input type="number" name="children" min="0" max="8" value="0" required></label><label>Contact email<input type="email" name="contactEmail" required></label><label>Contact phone<input type="tel" name="contactPhone" required></label></div><div id="passenger-fields" class="passenger-fields"></div><div class="price-breakdown" id="price-breakdown"></div><button class="button button-dark form-submit" type="submit">Review & place request <span>↗</span></button></form><div class="form-message" id="booking-message" role="alert"></div></div></dialog>
+
+  <dialog id="detail-dialog" class="modal-dialog detail-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner" id="detail-content"></div></dialog>
+  <dialog id="package-dialog" class="modal-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">ADMIN · PACKAGE DETAILS</p><h2 id="package-dialog-title">Add a <em>package.</em></h2><form id="package-form" class="form-stack"><input type="hidden" name="id"><label>Package title<input name="title" required maxlength="120"></label><label>Destination<select name="destinationId" required></select></label><div class="form-grid"><label>Duration (days)<input name="durationDays" type="number" min="1" required></label><label>Price (USD)<input name="price" type="number" step="0.01" min="0" required></label></div><label>Category<input name="category" required></label><label>Image URL<input name="imageUrl" type="url" required></label><label>Description<textarea name="description" rows="3" required></textarea></label><button class="button button-dark form-submit">Save package <span>↗</span></button></form><p class="form-message" id="package-message" role="alert"></p></div></dialog>
+
+  <dialog id="hotel-detail-dialog" class="modal-dialog detail-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner" id="hotel-detail-content"></div></dialog>
+
+  <dialog id="hotel-booking-dialog" class="modal-dialog booking-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">A DEMONSTRATION HOTEL BOOKING</p><h2>Book your <em>stay.</em></h2><p class="modal-note">This request does not reserve a room. No payment is collected.</p><form id="hotel-booking-form" class="form-stack"><input type="hidden" name="hotelId"><input type="hidden" name="roomId"><div class="booking-selected" id="hotel-booking-selected"></div><div class="form-grid"><label>Check-in date<input type="date" name="checkInDate" required></label><label>Check-out date<input type="date" name="checkOutDate" required></label><label>Guests<input type="number" name="guests" min="1" max="9" value="1" required></label><label>Contact email<input type="email" name="contactEmail" required></label></div><div class="price-breakdown" id="hotel-price-breakdown"></div><button class="button button-dark form-submit" type="submit">Place booking request <span>↗</span></button></form><div class="form-message" id="hotel-booking-message" role="alert"></div></div></dialog>
+
+  <dialog id="hotel-dialog" class="modal-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">ADMIN · HOTEL DETAILS</p><h2 id="hotel-dialog-title">Add a <em>hotel.</em></h2><form id="hotel-form" class="form-stack"><input type="hidden" name="id"><label>Hotel name<input name="name" required maxlength="100"></label><label>Location<input name="location" required maxlength="100"></label><label>Address<input name="address" required maxlength="200"></label><label>Rating (0-5)<input name="rating" type="number" step="0.1" min="0" max="5" required></label><label>Image URL<input name="imageUrl" type="url" required></label><label>Description<textarea name="description" rows="3" required></textarea></label><label>Amenities (comma-separated)<input name="amenities" placeholder="Free Wi-Fi, Pool, Spa"></label><button class="button button-dark form-submit">Save hotel <span>↗</span></button></form><p class="form-message" id="hotel-message" role="alert"></p></div></dialog>
+
+  <dialog id="room-dialog" class="modal-dialog"><button class="modal-close" data-close aria-label="Close">×</button><div class="modal-inner"><p class="eyebrow">ADMIN · ROOM DETAILS</p><h2 id="room-dialog-title">Add a <em>room.</em></h2><form id="room-form" class="form-stack"><input type="hidden" name="id"><label>Hotel<select name="hotelId" required></select></label><label>Room type<input name="roomType" required maxlength="80"></label><div class="form-grid"><label>Price per night (USD)<input name="pricePerNightCents" type="number" step="0.01" min="0" required></label><label>Capacity<input name="capacity" type="number" min="1" required></label></div><label>Image URL<input name="imageUrl" type="url" required></label><label>Amenities (comma-separated)<input name="amenities" placeholder="Wi-Fi, Balcony, City View"></label><label>Active<input name="active" type="checkbox"></label><button class="button button-dark form-submit">Save room <span>↗</span></button></form><p class="form-message" id="room-message" role="alert"></p></div></dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
